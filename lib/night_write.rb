@@ -5,12 +5,12 @@ require 'key'
 class NightWriter
 
   def initialize
-    @reader = FileReader.new
+    @reader = FileReadWriter.new
     @output = ""
     @output_count = 0
   end
 
-  def convert_to_braille(input_string)
+  def convert_to_braille(file_in)
     translated = ""
     input.each_char do |char|
       translated = translated.concat(DECODE_KEY.fetch(char))
@@ -52,7 +52,7 @@ end
 # last is empty, storing results in @output then
 # prints @output to the output file
 
-def braille_to_file(div1, div2, div3)
+def braille_to_plain(div1, div2, div3)
   @output = ""
   @output_count = 0
   until div3.empty?

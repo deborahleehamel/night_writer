@@ -1,10 +1,10 @@
 $LOAD_PATH.unshift(File.expand_path("..lib",__dir__))
-require 'file_reader'
+require 'file_readwriter'
 
 class NightReader
 
   def initialize
-    @reader = FileReader.new
+    @reader = FileReadWriter.new
   end
 
   def convert_output(output_array)

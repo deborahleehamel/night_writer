@@ -4,7 +4,7 @@ class NightWriter
   attr_reader :file_reader
 
   def initialize
-    @reader = FileReader.new
+    @reader = FileReadWriter.new
   end
 
   def encode_file_to_braille
