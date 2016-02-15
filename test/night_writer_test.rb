@@ -11,12 +11,12 @@ class NightWriterTest < Minitest::Test
   def test_if_can_translate_a_to_braille
     translated = NightWriter.new(file_in, file_out)
     a = translated.encode_to_braille("a")
-    assert_equal a, "O.\n..0.\n...."
+    assert_equal a, "O.\n..\n.."
   end
 
   def test_if_can_decode_braille_a_to_plain_a
     decoded = NightWriter.new(file_in, file_out)
-    a = decoded.encode_to_plain("O.\n..0.\n....")
+    a = decoded.encode_to_plain("O.\n..\n..")
     assert equal a, "a"
   end
 
