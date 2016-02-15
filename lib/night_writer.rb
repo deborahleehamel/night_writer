@@ -1,6 +1,6 @@
 require 'key'
 
-class FileReadWriter
+class FileReader
 
   # file = File.open(ARGV[1], "w")
   #
@@ -46,30 +46,18 @@ class NightWriter
   #   DECODER_KEY
   # end
 
-  def decode
-   @reader.read.chars.map { |n| }
-  end
+  # def decode
+  #   @reader.read.chars.map { |n| }
+  # end
 
   def runner
     output = File.new(ARGV[1], "w+")
     output.write(decode)
     output.close
   end
-if __FILE__ == $0
+
   # puts ARGV.inspect
-
-  nw = NightWriter.new
-  frw = FileReadWriter.new
-
-  inputs = frw.read
-  encoded = nw.encode(inputs)
-  frw.write(encoded)
-
-  nw.do_all_the_things
-  
-  #fw = FileWriter.new
-  #outputa = NightWriter.new
-  #outputa.runner
+  outputa = NightWriter.new
+  outputa.runner
 
   puts "Created '#{ARGV[1]}' containing #{File.read(ARGV[0]).length} characters.""
-end
