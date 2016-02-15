@@ -1,27 +1,5 @@
 require 'key'
 
-class FileReader
-
-  # file = File.open(ARGV[1], "w")
-  #
-  # translate = NightWriter.new
-  #
-  # translate.convert_to_braille(read)
-  #
-  # file.close
-
-  def read
-    filename = ARGV[0]
-    File.read(filename)
-  end
-
-  # def writes(text)
-  #   output_file = File.open(ARGV[1], 'a')
-  #   output_file.write(text)
-  # end
-
-end
-
 class NightWriter
   attr_reader :file_reader
 
