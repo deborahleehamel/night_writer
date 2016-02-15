@@ -28,14 +28,18 @@ class NightWriter
   #   @reader.read.chars.map { |n| }
   # end
 
-  def runner
-    output = File.new(ARGV[1], "w+")
-    output.write(decode)
-    output.close
-  end
+  # def runner
+  #   output = File.new(ARGV[1], "w+")
+  #   output.write(decode)
+  #   output.close
+  # end
 
   # puts ARGV.inspect
-  outputa = NightWriter.new
-  outputa.runner
+  # outputa = NightWriter.new
+  # outputa.runner
 
-  puts "Created '#{ARGV[1]}' containing #{File.read(ARGV[0]).length} characters.""
+  if __FILE__ == $0
+    nw = NightWriter.new(ARGV[0] || "message.txt", ARGV[1] || "braille.txt")
+    nw.encode_file_to_braille
+
+  # puts "Created '#{ARGV[1]}' containing #{File.read(ARGV[0]).length} characters.""
