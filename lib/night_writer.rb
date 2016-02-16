@@ -1,45 +1,66 @@
-require 'key'
+require_relative 'key'
+
+class FileReader
+  def read
+    filename = ARGV[0]
+    File.read(filename)
+  end
+end
 
 class NightWriter
-  attr_reader :file_reader
+  attr_reader :reader
 
   def initialize
-    @reader = FileReadWriter.new
+    @reader = FileReader.new
   end
 
   def encode_file_to_braille
     # I wouldn't worry about testing this method
     # unless you get everything else done
     plain = reader.read
-    braille = encode_to braille(plain)
+    braille = encode_to_braille(plain)
   end
 
   def encode_to_braille(input)
-    # you've taken in an INPUT string
-    # do the magic
-    # send out an OUTPUT string
+    line_1 = []
+    line_2 = []
+    line_3 = []
+    end_output = []
+
+    raw_braille(input).each_slice(40) do |full_line|
+      full_line.flatten.each_slice(6) do |slice|
+        line_1 << slice[0..1]
+        line_2 << slice[2..3]
+        line_3 << slice[4..5]
+      end
+      line = line_1.join + "\n" + line_2.join + "\n" + line_3.join
+      end_output << line
+      line_1.clear
+      line_2.clear
+      line_3.clear
+    end
+    end_output.join("\n")
   end
 
-  # def decoder(key)
-  #   DECODER_KEY
-  # end
+  def raw_braille(input)
+    input.chars.map do |letter|
+      ALL_BRAILLE_KEY[letter]
+    end
+  end
 
-  # def decode
-  #   @reader.read.chars.map { |n| }
-  # end
 
-  # def runner
-  #   output = File.new(ARGV[1], "w+")
-  #   output.write(decode)
-  #   output.close
-  # end
+    # you've taken in an INPUT string
+    #Turn plain text into Braille text
 
-  # puts ARGV.inspect
-  # outputa = NightWriter.new
-  # outputa.runner
+#   a. create a hash of letters to make map
+#   b. for each plain letter, write braille letter on 3 lines
+#   c. support for capitalization
+#   d. support numbers
+#   e. constrain braille file to 80 characters wide
+#
+# 4. Write braille text in new text file
+# 5. write test files, TDD
 
-  if __FILE__ == $0
-    nw = NightWriter.new(ARGV[0] || "message.txt", ARGV[1] || "braille.txt")
-    nw.encode_file_to_braille
+end
 
-  # puts "Created '#{ARGV[1]}' containing #{File.read(ARGV[0]).length} characters.""
+puts ARGV.inspect
