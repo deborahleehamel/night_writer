@@ -13,7 +13,6 @@ class FileReadWriter
   def read
     filename = ARGV[0]
     content = File.read(filename)
-    puts "Created #{ARGV[1]} containing #{content.length} characters"
   end
 
   def write(text)

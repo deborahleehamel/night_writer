@@ -20,6 +20,10 @@ class NightWriterTest < Minitest::Test
   #   assert equal a, "a"
   # end
 
+  def test_that_night_writer_class_exists
+  assert  NightWriter.new
+  end
+
   def test_can_encode_a_to_braille
    braille_output = NightWriter.new.encode_to_braille("a")
    assert_equal braille_output, "0.\n..\n.."
@@ -40,7 +44,7 @@ class NightWriterTest < Minitest::Test
    assert_equal braille_output, "..0...0.\n......0.\n.0...0.."
   end
 
-  def test_can_encode_eighty_a_to_braille
+  def test_can_encode_eighty_for_a_to_braille
    braille_output = NightWriter.new.encode_to_braille("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
    expected_output = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
 ................................................................................
@@ -50,5 +54,52 @@ class NightWriterTest < Minitest::Test
 .."
    assert_equal braille_output, expected_output
   end
+
+  def test_can_encode_eighty_for_A_caps_to_braille
+   braille_output = NightWriter.new.encode_to_braille("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+   expected_output ="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
+................................................................................
+................................................................................
+0.
+..
+.."
+
+   assert_equal braille_output, expected_output
+  end
+
+  def test_can_encode_space_to_braille
+    braille_output = NightWriter.new.encode_to_braille(" ")
+    expected_output = "..
+..
+.."
+
+     assert_equal braille_output, expected_output
+    end
+
+  def test_can_encode_all_char_snippet_to_braille
+    skip
+   braille_output = NightWriter.new.encode_to_braille(" !")
+   expected_output = "....
+..00
+..0."
+
+   assert_equal braille_output, expected_output
+  end
+
+  def test_can_encode_all_character_string_to_braille
+    skip
+   braille_output = NightWriter.new.encode_to_braille(" !',-.?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+   expected_output = "..............0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000...0...0...00..
+..00..0...000...0....0.00.00000.00..0....0.00.00000.00..0.00...0.0......0.......
+..0.0...00.000....................0.0.0.0.0.0.0.0.0.0.0000.0000000.0...0...0...0
+00..0...00..00..0....0...0..0...0...00..00..0...00..00..0....0...0..0...0....0..
+.0...0..0...00..00..0...00......0........0...0..0...00..00..0...00......0...00..
+...0...0...0...0...0...0...00..00..00..00..00..00..00..00..00..00..000.000.0.0.0
+00..00..0.
+.....0...0
+00.000.000"
+   assert_equal braille_output, expected_output
+  end
+
 
 end

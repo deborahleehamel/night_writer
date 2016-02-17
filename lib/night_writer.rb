@@ -19,6 +19,8 @@ class NightWriter
     # unless you get everything else done
     plain = reader.read
     braille = encode_to_braille(plain)
+    puts "Created #{reader.file.inspect} containing #{braille.length/3} characters"
+
   end
 
   def encode_to_braille(input)
@@ -27,7 +29,7 @@ class NightWriter
     line_3 = []
     end_output = []
 
-    raw_braille(input).each_slice(40) do |full_line|
+    prep_braille(input).each_slice(40) do |full_line|
       full_line.flatten.each_slice(6) do |slice|
         line_1 << slice[0..1]
         line_2 << slice[2..3]
@@ -48,6 +50,20 @@ class NightWriter
     end
   end
 
+  def prep_braille(input)
+    braille = []
+    raw_braille(input).each do |letter|
+      if letter.first.class == Array
+        letter.each do |shift|
+        braille << shift
+        end
+      else
+        braille << letter
+      end
+    end
+    braille
+  end
+
 
     # you've taken in an INPUT string
     #Turn plain text into Braille text
@@ -63,4 +79,4 @@ class NightWriter
 
 end
 
-puts ARGV.inspect
+# puts ARGV.inspect
