@@ -1,10 +1,12 @@
-$LOAD_PATH.unshift(File.expand_path("..lib",__dir__))
-require 'file_readwriter'
+require_relative 'key'
+require_relative 'file_io'
 
 class NightReader
+  include FileIO
 
   def initialize
-    @reader = FileIO.new
+    message = FileIO.read
+    convert_file_to_text(message)
   end
 
   def convert_output(output_array)
