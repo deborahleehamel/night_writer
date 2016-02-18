@@ -4,7 +4,7 @@ require 'file_readwriter'
 class NightReader
 
   def initialize
-    @reader = FileReadWriter.new
+    @reader = FileIO.new
   end
 
   def convert_output(output_array)

@@ -1,26 +1,18 @@
 require_relative 'key'
-
-class FileReader
-  def read
-    filename = ARGV[0]
-    File.read(filename)
-  end
-end
+require_relative 'file_io'
 
 class NightWriter
-  attr_reader :reader
+  include FileIO
 
-  def initialize
-    @reader = FileReader.new
+  def initialize(input_file, output_file)
+    message = read(input_file)
+    encode_file_to_braille(message, output_file)
   end
 
-  def encode_file_to_braille
-    # I wouldn't worry about testing this method
-    # unless you get everything else done
-    plain = reader.read
-    braille = encode_to_braille(plain)
-    puts "Created #{reader.file.inspect} containing #{braille.length/3} characters"
-
+  def encode_file_to_braille(message, output_file)
+    braille = encode_to_braille(message)
+    write(braille, output_file)
+    puts "Created #{output_file} containing #{braille.length/3} characters"
   end
 
   def encode_to_braille(input)
@@ -50,19 +42,20 @@ class NightWriter
     end
   end
 
-  def prep_braille(input)
-    braille = []
-    raw_braille(input).each do |letter|
-      if letter.first.class == Array
-        letter.each do |shift|
-        braille << shift
-        end
-      else
-        braille << letter
-      end
-    end
-    braille
-  end
+  # def prep_braille(input)
+  #   braille = []
+  #   raw_braille(input).each do |letter|
+  #     if ("A".."Z").include?(letter)  #then its capital...
+  #     # if letter.first.class == Array
+  #       # letter.each do |shift|
+  #       braille << shift
+  #       end
+  #     else
+  #       braille << letter
+  #     end
+  #   end
+  #   braille
+  # end
 
 
     # you've taken in an INPUT string
