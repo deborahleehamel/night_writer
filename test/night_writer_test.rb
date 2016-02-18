@@ -80,15 +80,14 @@ class NightWriterTest < Minitest::Test
   def test_can_encode_all_char_snippet_to_braille
     skip
    braille_output = NightWriter.new.encode_to_braille(" !")
-   expected_output = "....
-..00
-..0."
+   expected_output = "....\n....\n..0."
 
    assert_equal braille_output, expected_output
   end
 
   def test_can_encode_all_character_string_to_braille
     skip
+
    braille_output = NightWriter.new.encode_to_braille(" !',-.?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
    expected_output = "..............0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000...0...0...00..
 ..00..0...000...0....0.00.00000.00..0....0.00.00000.00..0.00...0.0......0.......
