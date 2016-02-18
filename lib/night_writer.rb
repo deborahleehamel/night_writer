@@ -4,15 +4,15 @@ require_relative 'file_io'
 class NightWriter
   include FileIO
 
-  def initialize(input_file, output_file)
-    message = read(input_file)
-    encode_file_to_braille(message, output_file)
+  def initialize
+    message = FileIO.read
+    encode_file_to_braille(message)
   end
 
-  def encode_file_to_braille(message, output_file)
+  def encode_file_to_braille(message)
     braille = encode_to_braille(message)
-    write(braille, output_file)
-    puts "Created #{output_file} containing #{braille.length/3} characters"
+    write(braille)
+    puts "Created #{ARGV[1]} containing #{braille.length/3} characters"
   end
 
   def encode_to_braille(input)
@@ -21,7 +21,7 @@ class NightWriter
     line_3 = []
     end_output = []
 
-    prep_braille(input).each_slice(40) do |full_line|
+    raw_braille(input).each_slice(40) do |full_line|
       full_line.flatten.each_slice(6) do |slice|
         line_1 << slice[0..1]
         line_2 << slice[2..3]
