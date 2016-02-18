@@ -26,31 +26,26 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_can_encode_a_to_braille
-    skip
    braille_output = NightWriter.new.encode_to_braille("a")
    assert_equal braille_output, "0.\n..\n.."
   end
 
   def test_can_encode_ab_to_braille
-    skip
    braille_output = NightWriter.new.encode_to_braille("ab")
    assert_equal braille_output, "0.0.\n..0.\n...."
   end
 
   def test_can_encode_A_to_braille
-    skip
    braille_output = NightWriter.new.encode_to_braille("A")
    assert_equal braille_output, "..0.\n....\n.0.."
   end
 
   def test_can_encode_AB_to_braille
-    skip
    braille_output = NightWriter.new.encode_to_braille("AB")
    assert_equal braille_output, "..0...0.\n......0.\n.0...0.."
   end
 
   def test_can_encode_eighty_for_a_to_braille
-    skip
    braille_output = NightWriter.new.encode_to_braille("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
    expected_output = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
 ................................................................................
@@ -62,7 +57,6 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_can_encode_eighty_for_A_caps_to_braille
-    skip
    braille_output = NightWriter.new.encode_to_braille("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
    expected_output ="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.
 ................................................................................
@@ -75,7 +69,6 @@ class NightWriterTest < Minitest::Test
   end
 
   def test_can_encode_space_to_braille
-    skip
     braille_output = NightWriter.new.encode_to_braille(" ")
     expected_output = "..
 ..
