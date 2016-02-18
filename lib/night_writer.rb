@@ -13,7 +13,7 @@ class NightWriter
   def encode_file_to_braille(message)
     braille = encode_to_braille(message)
     write(braille)
-    puts "Created #{ARGV[1]} containing #{braille.length/3} characters"
+    puts "Created #{ARGV[1]} containing #{message.length} characters"
   end
 
   def encode_to_braille(input)

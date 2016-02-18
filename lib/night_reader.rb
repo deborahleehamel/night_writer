@@ -13,7 +13,7 @@ class NightReader
     output = ""
     output.each { |n| output << n }
     @reader.writes(output)
-    puts "Created #{ARGV[1]} containing #{output.length} characters."
+    puts "Created #{ARGV[0]} containing #{output.length} characters."
   end
 
 
