@@ -9,12 +9,32 @@ class NightReader
     convert_file_to_text(message)
   end
 
-  def convert_output(output_array)
-    output = ""
-    output.each { |n| output << n }
-    @reader.writes(output)
-    puts "Created #{ARGV[1]} containing #{output.length} characters."
-  end
+ def convert_file_to_text(message)
+    text = convert_to_text(message)
+    write(text)
+    puts "Created #{ARGV[1]} containing #{text.length} characters"
+ end
 
+ def convert_to_text(input)
+   split_on_newline = input.chomp.split
+
+   all_braille_characters = []
+   until split_on_newline.first.length == 0
+     split_on_newline.each do |line|
+       all_braille_characters << line.slice!(0..1)
+     end
+   end
+   single_string = all_braille_characters.join
+   split_braille = single_string.split(//)
+
+   text_output = ""
+  #  puts split_braille
+   until split_braille.empty?
+     braille_character = split_braille.slice!(0..5)
+     print braille_character
+     text_output += BRAILLE_TO_TEXT[braille_character]
+   end
+   text_output
+ end
 
 end
