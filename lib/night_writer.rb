@@ -27,9 +27,7 @@ class NightWriter
   # total_characters += chars.length
   # if total_characters > 80
 # my lines <<
-
-
-  # else
+# else
   raw_braille(input).each_slice(40) do |full_line|
       full_line.flatten.each_slice(6) do |slice|
         line_1 << slice[0..1]

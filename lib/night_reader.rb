@@ -6,14 +6,11 @@ class NightReader
 
   def initialize
     message = FileIO.read
-    # convert_file_to_text(message)
+    convert_file_to_text(message)
   end
 
-
  def convert_file_to_text(message)
-    # require "pry"; binding.pry
     text = convert_to_text(message)
-
     write(text)
     puts "Created #{ARGV[1]} containing #{text.length} characters"
  end
@@ -31,21 +28,13 @@ class NightReader
    split_braille = single_string.split(//)
 
    text_output = ""
+  #  puts split_braille
    until split_braille.empty?
      braille_character = split_braille.slice!(0..5)
+     print braille_character
      text_output += BRAILLE_TO_TEXT[braille_character]
    end
    text_output
  end
-
-
-# look for # for numbers
-  # def convert_output(output_array)
-  #   output = ""
-  #   output.each { |n| output << n }
-  #   @reader.writes(output)
-  #   puts "Created #{ARGV[0]} containing #{output.length} characters."
-  # end
-
 
 end
