@@ -19,6 +19,13 @@ class NightWriterTest < Minitest::Test
    assert_equal braille_output, "0.0.\n..0.\n...."
   end
 
+  def test_can_encode_lowercase_message_to_braille
+   braille_output = NightWriter.new.encode_to_braille("hello world")
+   assert_equal braille_output, "0.0.0.0.0....00.0.0.00
+00.00.0..0..00.0000..0
+....0.0.0....00.0.0..."
+  end
+
   def test_can_encode_A_to_braille
    braille_output = NightWriter.new.encode_to_braille("A")
    assert_equal braille_output, "..0.\n....\n.0.."
@@ -152,6 +159,5 @@ class NightWriterTest < Minitest::Test
 
      assert_equal braille_output, expected_output
     end
-
 
 end
