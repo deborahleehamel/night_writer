@@ -20,8 +20,16 @@ class NightWriter
     line_1 = []
     line_2 = []
     line_3 = []
+    # total_characters = 0
     end_output = []
 
+  # raw_braille(input).map_to_index |chars, index|
+  # total_characters += chars.length
+  # if total_characters > 80
+# my lines <<
+
+
+  # else
   raw_braille(input).each_slice(40) do |full_line|
       full_line.flatten.each_slice(6) do |slice|
         line_1 << slice[0..1]
@@ -30,6 +38,7 @@ class NightWriter
       end
       line = line_1.join + "\n" + line_2.join + "\n" + line_3.join
       end_output << line
+
       line_1.clear
       line_2.clear
       line_3.clear

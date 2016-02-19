@@ -22,7 +22,7 @@ class NightWriterTest < Minitest::Test
 
   def test_that_night_writer_class_exists
     nw = NightWriter.new
-  assert_equal nw.class, NightWriter
+    assert_equal nw.class, NightWriter
   end
 
   def test_can_encode_a_to_braille
