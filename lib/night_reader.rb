@@ -28,10 +28,9 @@ class NightReader
    split_braille = single_string.split(//)
 
    text_output = ""
-  #  puts split_braille
+
    until split_braille.empty?
      braille_character = split_braille.slice!(0..5)
-     print braille_character
      text_output += BRAILLE_TO_TEXT[braille_character]
    end
    text_output

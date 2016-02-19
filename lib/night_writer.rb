@@ -52,34 +52,4 @@ class NightWriter
     end
   end
 
-  # def prep_braille(input)
-  #   braille = []
-  #   raw_braille(input).each do |letter|
-  #     if ("A".."Z").include?(letter)  #then its capital...
-  #     # if letter.first.class == Array
-  #       # letter.each do |shift|
-  #       braille << shift
-  #       end
-  #     else
-  #       braille << letter
-  #     end
-  #   end
-  #   braille
-  # end
-
-
-    # you've taken in an INPUT string
-    #Turn plain text into Braille text
-
-#   a. create a hash of letters to make map
-#   b. for each plain letter, write braille letter on 3 lines
-#   c. support for capitalization
-#   d. support numbers
-#   e. constrain braille file to 80 characters wide
-#
-# 4. Write braille text in new text file
-# 5. write test files, TDD
-
 end
-
-# puts ARGV.inspect
